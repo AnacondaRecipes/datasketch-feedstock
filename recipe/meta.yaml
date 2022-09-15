@@ -32,6 +32,7 @@ requirements:
 test:
   requires:
     - pip
+    - numpy <1.23
   imports:
     - datasketch
   commands:

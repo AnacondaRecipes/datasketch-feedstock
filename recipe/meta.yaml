@@ -1,0 +1,51 @@
+{% set name = "datasketch" %}
+{% set author = "ekzhu" %}
+{% set version = "1.5.8" %}
+{% set sha256 = "8dfac059e65684d1d18652dd770e843deea0800c451bc81d2c2f6ff23e37589e" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/{{ author }}/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv
+
+requirements:
+  host:
+    - python
+    - pip
+    - setuptools
+    - wheel
+  run:
+    - python
+    - numpy
+    - scipy >=1.0.0
+  run_constrained:
+    - cassandra-driver >=3.2.0
+    - redis >=2.10.0
+
+test:
+  requires:
+    - pip
+  imports:
+    - datasketch
+  script:
+    - pip check
+
+about:
+  home: https://ekzhu.com/datasketch
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Probabilistic data structures for processing and searching very large datasets
+  description: |
+    datasketch gives you probabilistic data structures
+    that can process and search very large amount of data super fast, with little loss of accuracy.
+  doc_url: https://ekzhu.com/datasketch/
+  doc_source_url: https://github.com/ekzhu/datasketch/tree/master/docs
+  dev_url: https://github.com/ekzhu/datasketch

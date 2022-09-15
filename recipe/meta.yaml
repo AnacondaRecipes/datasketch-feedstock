@@ -34,7 +34,7 @@ test:
     - pip
   imports:
     - datasketch
-  script:
+  commands:
     - pip check
 
 about:

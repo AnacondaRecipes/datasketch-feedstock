@@ -32,9 +32,10 @@ requirements:
 test:
   requires:
     - pip
+    - numpy <1.23
   imports:
     - datasketch
-  script:
+  commands:
     - pip check
 
 about:

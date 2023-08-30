@@ -21,7 +21,7 @@ requirements:
     - wheel
   run:
     - python
-    - numpy >1.11
+    - numpy >=1.11
     - scipy >=1.0.0
   run_constrained:
     - cassandra-driver >=3.20
@@ -42,7 +42,7 @@ about:
   license_file: LICENSE
   summary: Probabilistic data structures for processing and searching very large datasets
   description: |
-    datasketch gives you probabilistic data structures 
+    datasketch gives you probabilistic data structures
     that can process and search very large amount of data super fast, with little loss of accuracy.
   doc_url: https://ekzhu.com/datasketch/
   dev_url: https://github.com/ekzhu/datasketch

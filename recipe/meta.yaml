@@ -1,19 +1,17 @@
 {% set name = "datasketch" %}
-{% set author = "ekzhu" %}
-{% set version = "1.5.8" %}
-{% set sha256 = "8dfac059e65684d1d18652dd770e843deea0800c451bc81d2c2f6ff23e37589e" %}
+{% set version = "1.5.9" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/{{ author }}/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://github.com/ekzhu/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 909c81223834778b85b101cc2a764d0f5f626dc75335511c07419ea103fc8868
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed -vv
 
 requirements:
   host:
@@ -23,18 +21,17 @@ requirements:
     - wheel
   run:
     - python
-    - numpy
+    - numpy >=1.11
     - scipy >=1.0.0
   run_constrained:
-    - cassandra-driver >=3.2.0
+    - cassandra-driver >=3.20
     - redis >=2.10.0
 
 test:
-  requires:
-    - pip
-    - numpy <1.23
   imports:
     - datasketch
+  requires:
+    - pip
   commands:
     - pip check
 
@@ -48,5 +45,4 @@ about:
     datasketch gives you probabilistic data structures
     that can process and search very large amount of data super fast, with little loss of accuracy.
   doc_url: https://ekzhu.com/datasketch/
-  doc_source_url: https://github.com/ekzhu/datasketch/tree/master/docs
   dev_url: https://github.com/ekzhu/datasketch
